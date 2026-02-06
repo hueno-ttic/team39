@@ -2,7 +2,10 @@ PREDEF:
   - preface.re
 
 CHAPS:
-  - article.re
+  - super_reader.re
+  - mai.re
+  - yusuke.re
+  - kuromu.re
 
 APPENDIX:
 
