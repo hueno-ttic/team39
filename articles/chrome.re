@@ -6,7 +6,7 @@
 //emlist{
 後日談というか今回のオチ。
 3日間もかからず、3時間で出来てしまった。
-すごいなSuno。
+すごいなSuno AI。
 //}@<br>{}
 
 本稿は、2026年2月6日から3日間の日程で開催された執筆ハッカソン「Bookathon」の成果物として制作されました。限られた時間の中で生まれた熱量を、そのままパッケージしています。@<fn>{book}@<br>{}
@@ -17,11 +17,9 @@
 ・コンセプト立案：1.5時間@<br>{}
 ・作詞：1時間@<br>{}
 ・作曲／編曲：0.5時間@<br>{}
-・合計：約3時間@<br>{}
-@<br>{}
+・合計：約3時間@<br>{}@<br>{}
 
-人間の予測を軽々と追い越していくAIの進化速度と、誰もがクリエイターになれる「作曲の民主化」の衝撃。本書は、AIという高度な「楽器」を手にしたアニオタが、爆速で理想の一曲を創り上げた3日間の（実質3時間の）記録です。進化し続ける創作の現場を、ぜひお楽しみください。
-@<br>{}
+人間の予測を軽々と追い越していくAIの進化速度と、誰もがクリエイターになれる「作曲の民主化」の衝撃。本書は、AIという高度な「楽器」を手にしたアニオタが、爆速で理想の一曲を創り上げた3日間の（実質3時間の）記録です。進化し続ける創作の現場を、ぜひお楽しみください。@<br>{}
 
 //footnote[book][Bookathon - 本を書くハッカソンイベント https://tech-book-cat.connpass.com/event/380787/]
 
@@ -123,6 +121,39 @@ B：カオス系電波ソング
 「聴かせ方」を緻密にディレクションすることで、楽曲の解像度は飛躍的に向上する。具体的には、もっとも伝えたい「キラーワード」をイントロの掴みに配置する、サビで執拗にリフレインさせる、あるいはブレイク（休符）の瞬間に重ねるなど、音響的なレイアウトを意図的に設計するのだ。この構造的な演出こそが、リスナーの脳裏に強力なフックを植え付ける鍵となる。
 
 
+=== メタタグによる構造支配
+歌詞生成の品質を安定させる鍵となったのが、メタタグによる「楽曲構造の明示的な定義」である。
+
+これにより、どのフレーズがどのセクション（Verse/Chorus）に属するかを明確化できる。AIに対して楽曲の全体像を提示することで、コンテキストの解釈ミスを防ぎ、構成の破綻を回避できるメリットがある。
+
+
+@<strong>{Sunoのメタタグ一覧}
+[Intro]＝イントロ （前奏）
+[Verse]：Aメロ （物語の始まり、状況説明）
+[Pre-Chorus]：Bメロ （サビへのつなぎ、盛り上げ）
+[Chorus]：サビ（一番盛り上がるところ、メイン）
+[Bridge]＝Cメロ （大サビ前の変化、転調など）
+[Outro]＝アウトロ （後奏、終わり）
+  
+
+@<strong>{王道アニソン構成（フル尺）}
+[Intro]
+[Verse] （Aメロ）1番の物語開始。
+[Pre-Chorus] （Bメロ）徐々に盛り上げる。
+[Chorus] （サビ）1回目の爆発。
+[Verse 2] （2番 Aメロ）少しリズムを変えるとなお良し。
+[Pre-Chorus 2] （2番 Bメロ）
+[Chorus] （2番 サビ）
+[Bridge] （Cメロ）重要。雰囲気をガラッと変える（例：「静かになる」「ラップが入る」など）。
+[Guitar Solo] または [Interlude] （間奏）楽器の見せ場。
+[Chorus] （ラスサビ・大サビ）一番盛り上がる箇所。[Key Change]（転調）を入れるとよりアニソンらしくなります。
+[Outro] （アウトロ）
+
+
+
+
+
+
 === 歌詞のボリューム
 作詞フェーズにおいて極めて重要な変数が「歌詞の総テキスト量」である。Sunoが最も安定して出力できるのは「1曲あたり約200語前後」のようだが、ここにはハックの余地がある。たとえば「しっとりと聴かせる曲」なら意図的に語数を絞り、逆に「電波ソング」であれば制限を超えて詰め込む。この「文字密度の制御」こそが、AIに対するテンポや密度の指定として機能するという手応えを得た。
 
@@ -198,136 +229,98 @@ Markdown 乱れて 誤字脱字 (ひえぇ〜！)
 「涼宮ハルヒの消失」から16年も経ったことに驚愕を隠せない。
 //}@<br>{}
 
-作曲フェーズにおいて、プロデューサーは「正解の音」を定義し、楽曲の構造を支配する役割を担う。
+作曲フェーズにおいて、プロデューサーは「正解の音」を定義し、楽曲の構造を支配する役割を担う。@<br>{}
 
-SunoのCustomモードを使用する際、無料枠で制御可能な変数はVocalの性別、そして最重要かつ支配的なパラメータが「Styles」だ。このStyles指定こそが、最大の鬼門となる。単なる抽象的なタグの羅列は内部で相互干渉を起こし、意図したイメージを正確に定着させることが困難だからだ。ゆえにプロデューサーは、Styles指定を「階層的」に設計し、かつ楽曲全体の進行をメタタグで記述することで、AIに対して構造的な指示を与える必要がある。
+SunoのCustomモードを使用する際、無料枠で制御可能な変数はVocalの性別、そして最重要かつ支配的なパラメータが「Styles」だ。このStyles指定こそが、最大の鬼門となる。単なる抽象的なタグの羅列は内部で相互干渉を起こし、意図したイメージを正確に定着させることが困難だからだ。ゆえにプロデューサーは、Styles指定を「階層的」に設計し、かつ楽曲全体の進行をメタタグで記述することで、AIに対して構造的な指示を与える必要がある。@<br>{}
 
+
+//emlist{
 Stylesの階層的設計
 基礎レイヤー：ジャンル、テンポ、使用楽器、リズムパターン
 感情レイヤー：ムード、雰囲気、場面設定（シチュエーション）
 技術レイヤー：音響品質、空間処理（リバーブ等）、ミキシング特性
 ボーカルレイヤー：声種・性別、歌唱法、人数・編成、加工処理
+//}@<br>{}
 
+
+//emlist{
 前述の架空アニメOP曲は、以下のようなStylesを使用した。
 基礎レイヤー：Chaos Denpa Song,Hyper-J-Pop,Anime Opening,185 BPM,Chiptune,Synth-pop,Energetic Drums,Overdrive Guitar
 感情レイヤー：Fast-paced
 技術レイヤー：Glitchy,High syllable density
 ボーカルレイヤー：High-pitched Female Vocals,Idol group style,Rapid-fire lyrics,Talk-singing,Call and response
+//}@<br>{}
 
+
+//emlist{
 その他の例
 基礎レイヤー：J-Rock, Kawaii Future Bass, Piano, Strings, Slap Bass, Symphonic Metal, Eurobeat, Electro Swing, City Pop, Math Rock, J-Pop, EDM, Drum and Bass, Jazz, Acoustic Guitar, Orchestra
 感情レイヤー： Emotional, Melancholic, Uplifting, Cute, Dramatic, Epic, Sentimental, Dark, Chill, Dreamy, Nostalgic, Ethereal, Aggressive, Futuristic
 技術レイヤー： High Fidelity, Wide Stereo, Heavy Bass, Reverb, Wall of Sound, Lo-Fi, Atmospheric, 80s recording, Clean production, Deep Bass, Surround Sound
 ボーカルレイヤー： Male Vocals, Duet, Auto-tune, Whisper, Emotional Vocals, Choir, Screaming, Female Vocals, Rap, Spoken Word, Operatic, Gregorian Chant, Falsetto
+//}@<br>{}
 
 
 
+=== 楽曲をリバースエンジニアリングしStylesを推測
 
+脳内にある楽曲イメージを、正確に言語化するのは至難の業だ。そこで、イメージに近い既存楽曲のStylesを解析（リバースエンジニアリング）し、プロンプトとして再利用する手法を検証した。@<br>{}
 
+方法は単純だ。Geminiに対して具体的な曲名を提示し、「Suno用のStylesプロンプト」として出力させるだけである。LLMは楽曲のジャンルや構成要素を網羅的に把握しているようで、驚くほど的確なStyles定義を提示してくる。@<br>{}
 
+これらはあくまで楽曲の特徴を「抽象化」したプロンプトに過ぎない。しかしSunoに入力してみると、原曲の持つ空気感や再現度は予想以上に高かった。@<br>{}
 
- 
+ただし、この手法には陥りやすい罠がある。それは「特定の楽曲の模造品」を作るだけの作業になりがちな点だ。AI作曲を真に使いこなすためには、既存曲の解析を出発点としつつも、一つ一つのStyleタグが持つ役割を理解し、独自の組み合わせで全く新しい曲構造を設計する必要があるだろう。@<br>{}@<br>{}
 
-
-
-
-抽象化されたStyles　それでも曲の雰囲気は似てくる
-
-
-
-
-メタタグによる構造支配
-楽曲を3分〜4分の完成された「作品」として成立させるためには、構造タグ（Meta Tags）を駆使したデザインが必要です 。   
-
-[Intro] : 楽曲のトーンを設定。
-
-[Verse] : 物語の導入。Aメロにあたります。
-
-[Pre-Chorus] : サビ前の盛り上がり。Bメロにあたります 。   
-
-[Chorus] : メインフック。ここでキラーワードを最大限に強調します。
-
-`` : Cメロ。楽曲に変化と感情的な深み、あるいはクライマックスへのタメを作ります 。   
-
-や : 歌を休ませ、楽器の見せ場やリズムの溜めを作ります 。   
-
-[Outro] : 演奏の終了。フェードアウトや劇的な終わりの演出 。   
-
-歌詞・スタイル・構造の「相性」
-Lyric（歌詞）の文字数や改行位置と、指定したStyleが噛み合った時にだけ生まれる「奇跡のグルーヴ」を狙います。AIはプロンプトの意図を汲み取る力（プロンプト理解力）が向上していますが、それでも完璧ではありません。納得がいくまで、スタイルタグを微調整しながら生成を繰り返します 。   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=== とちゅう３
-プロデューサーとして「正解の音」を定義し、楽曲の構造を支配する。
-
-Styleという抽象化ワードの罠
-スタイル指定は抽象的な単語の羅列だが、使い込むと「似たような雰囲気」に収束する傾向がある。そこをどう差別化し、独自のノリを生み出すかがプロデューサーの腕の見せ所となる。
-
-歌詞・スタイル・構造の「相性」
-Lyric（歌詞）の文字数や構造と、指定したStyleが噛み合った時にだけ生まれる「奇跡のグルーヴ」が存在する。これを意図的に引き出すため、Sunoでは以下の構造用タグを駆使します 。   
-
-[Intro] : 世界観を提示する導入部。
-
-[Pre-Chorus] : Bメロ。サビへの期待感を最大化 。   
-
-[Chorus] : サビ。楽曲の核心となるフックを配置 。   
-
-`` : Cメロ。楽曲に変化と深みを与える 。   
-
-`` : 間奏。ギターなどの楽器による見せ場 。   
-
-[Outro] : 結末。余韻を残して終了 。   
-
-
-Lylic とStyleの相性、もしくはLylicの構造との相性はあるっぽい
-
-
-
-
-リバースエンジニアリングしてみた
+以下に、Geminiを用いて抽出した有名アニソンのStyles定義例を示す。@<br>{}
 
 //emlist{
 名状しがたき勢いで日常を侵食するハイテンションなラブコメOP曲：SAN値を削るカオス全開の高速電波ソング
-Hyper-energetic J-pop, Denpa-song, 180 BPM, High-pitched multiple female vocals, Call-and-response, Chaotic synth melodies, Fast-paced drums, Anisong OP style
+Hyper-energetic J-pop, Denpa-song, 180 BPM, High-pitched multiple female vocals,
+Call-and-response, Chaotic synth melodies, Fast-paced drums, Anisong OP style
 //}
 
 //emlist{
 些細な出来事を無駄に高い熱量で描く不条理学園コメディOP曲：恋の焦燥感をコミカルに描くハイテンションなデュエット
-Playful Hyper-pop, Rapid-fire male and female duet, Acoustic guitar and synth mix, 160 BPM, Quirky, High energy, Everyday life vibe, Fast delivery
+Playful Hyper-pop, Rapid-fire male and female duet, Acoustic guitar and synth mix,
+160 BPM, Quirky, High energy, Everyday life vibe, Fast delivery
 //}
 
 //emlist{
 テニスをほぼしない超高速部活コメディOP曲：謎の呪文が頭を回る中毒性抜群の早口な電波ソング
-Ultra-high BPM, Frenetic Denpa-pop, Multiple high-pitched vocals, Absurdist energy, Rapid-fire lyrics, Electronic dance pop, Chaotic arrangement
+Ultra-high BPM, Frenetic Denpa-pop, Multiple high-pitched vocals,
+Absurdist energy, Rapid-fire lyrics, Electronic dance pop, Chaotic arrangement
 //}
 
 //emlist{
 チョココロネの食べ方で盛り上がるマッタリ放課後トークOP曲：曖昧な歌詞と勢いで踊らせる中毒性の高い電波ディスコ
-Fast-paced Funk-pop, Slap bass, Brass section, High-pitched female vocals, Rapid-fire delivery, Nonsensical lyrics, 150 BPM, Catchy groove, 2000s Anisong style
+Fast-paced Funk-pop, Slap bass, Brass section, High-pitched female vocals,
+Rapid-fire delivery, Nonsensical lyrics, 150 BPM, Catchy groove,
+2000s Anisong style
 //}
 
 //emlist{
 西洋の機巧魔術と和のテイストが融合した高速回転系・学園バトルED曲：高速BPMと「回レ」の号令で熱狂させる鉄板アンセム
-High-speed Techno-pop, Japanese traditional instruments, Shamisen, Fast BPM 160, Repetitive catchy chorus, Multiple female vocals, Energetic, Hyper-dance-pop, Wagakki-techno
+High-speed Techno-pop, Japanese traditional instruments, Shamisen,
+Fast BPM 160, Repetitive catchy chorus, Multiple female vocals, Energetic,
+Hyper-dance-pop, Wagakki-techno
 //}
 
 //emlist{
 殺し屋と一般人が漫才のようにどつき合うカオスな友情ギャグOP曲：脳が溶けるような中毒性を持つカルト電波ソング
-Minimalist Punk-pop, Weird rhythm, Repetitive chants, Simple drums and claps, Quirky vocals, Experimental, Lo-fi energy, Funny and chaotic, Short phrases
-//}
+Minimalist Punk-pop, Weird rhythm, Repetitive chants, Simple drums and claps,
+Quirky vocals, Experimental, Lo-fi energy, Funny and chaotic, Short phrases
+//}@<br>{}
+
+
+
+=== Lyric（歌詞）とStyles（スタイル）の関係性
+定量的には検証しきれていないが、LyricとStylesの間には、無視できない相互依存関係が存在するようだ。特定のStylesで楽曲のフレームワークを定義した場合、そこにはめ込むLyricもまた、その構造に最適化されている必要がある。逆もまた真なりで、Lyricが持つ情報密度やリズム構造に合わせて、Stylesを選定しなければならない。
+
+現実として、機能しない組み合わせ（ミスマッチ）は確実に存在する。極端な例を挙げれば、「しっとりとしたバラード」というStyles定義に対し、文字数が過剰で情報密度の高い「電波ソング」的なLyricを流し込むと、生成結果は散漫になり、音楽として破綻しやすい。それとは別に、単に文字数が適切であっても、韻律やグルーヴが噛み合わないケースもある。この「パラメータの整合性」を見極め、Styleタグを微調整しながら、ガチャを回す工程が不可欠となる。
+
+
+
 
 
 
@@ -344,8 +337,26 @@ Minimalist Punk-pop, Weird rhythm, Repetitive chants, Simple drums and claps, Qu
 
 
 
-自分で作ったものは、正直かわいい
-それを可能な限り脱ぎ捨てて、正しい評価を下す必要がある。それにはおそらく鍛錬が必要。
+「生成」から「選別（セレクト）」へのパラダイムシフト
+AIを用いた楽曲制作において、プロデューサーの役割は劇的に変化した。かつての作曲が「白紙に一音ずつ音を置いていく作業」だったとすれば、Sunoを用いた作曲は「無数の選択肢から正解を選び抜く作業」と言えるだろう。
+
+無料モデル（v4.5-all）が生み出す混沌とした、しかし無数の可能性を、プロデューサーは「100通りのデモテープ」と捉えるべきだ。100点の正解が一発で出力されるのを待つのではない。文脈に最も合致するテイクを見極め、必要であれば「Extend（延長）」機能を駆使して、原石から楽曲を彫刻のように削り出していく。この「選別眼」こそが、新たな時代の作曲能力となる。
+
+「自画自賛」というバイアスとの闘い
+ここで最大の敵となるのが、自分自身が抱く「愛着」だ。自らのプロンプトから生まれた生成物は、どうしても可愛く見えてしまう。だが、プロデューサーに求められるのは、その「愛着バイアス」を冷徹に排除する審美眼である。
+
+コンセプトに対して、その音は本当に正しいか？ 歌詞のリズムとメロディのアクセントに不自然さはないか？
+
+デザインの校正作業と同様に、自身の生成物を第三者の耳でジャッジする「客観視の鍛錬」が不可欠だ。あえて「可愛さ」を脱ぎ捨て、冷徹な評価を下せるかどうかが、作品のクオリティを決定づける。
+
+
+
+
+
+
+
+
+自分で作ったものは、正直かわいい。それを可能な限り脱ぎ捨てて、客観的な正しい評価を下す必要がある。それにはおそらく鍛錬が必要。
 
 
 
@@ -363,6 +374,9 @@ Minimalist Punk-pop, Weird rhythm, Repetitive chants, Simple drums and claps, Qu
 
 「自画自賛」を脱ぎ捨てる鍛錬
 自分で作ったものは、どうしても「可愛く」見えてしまう。その愛着バイアスを排除し、コンセプトに対して冷徹に評価を下すための審美眼が必要。これには、デザインの校正と同じような「客観視の鍛錬」が求められる。
+
+
+
 
 
 
