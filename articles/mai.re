@@ -1,7 +1,8 @@
 = ノーコード×AI。3時間でパーティゲームを作った話
 
-EMKO  
-@Emkoai（X: https://x.com/emkoai）
+//flushright{ EMKO //}  
+//flushright{ @Emkoai（X: https://x.com/emkoai） //}  
+
 
 プログラミング経験ゼロの私が、Bookathonに参加しClaudeとの対話だけで、約3時間でパーティゲームを作りました。
 AIが生成した川柳を2人が選び合い、まわりのみんなが投票する——「どっちの句があるある？」の開発記録です。
